@@ -1,6 +1,12 @@
+#' Show free available EPW sources using Mapbox
+#'
 #' @importFrom mapboxer mapboxer
 #' @importFrom eplusr read_epw
 #' @export
+#' @examples
+#' \dontrun{
+#' epwmap()
+#' }
 epwmap <- function() {
     db <- eplusr:::WEATHER_DB
 
