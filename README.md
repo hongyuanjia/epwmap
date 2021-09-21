@@ -4,9 +4,13 @@
 # epwmap
 
 <!-- badges: start -->
+
+[![CRAN
+status](https://www.r-pkg.org/badges/version/epwmap)](https://CRAN.R-project.org/package=epwmap)
+[![R-CMD-check](https://github.com/hongyuanjia/epwmap/workflows/R-CMD-check/badge.svg)](https://github.com/hongyuanjia/epwmap/actions)
 <!-- badges: end -->
 
-> Interactive visualization of free available EPW sources use
+> Interactive visualization of free available EPW sources using
 > [Mapbox](https://docs.mapbox.com/mapbox-gl-js/api/)
 
 ## Installation
