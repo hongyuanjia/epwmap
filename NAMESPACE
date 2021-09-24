@@ -2,4 +2,5 @@
 
 export(epwmap)
 importFrom(eplusr,read_epw)
+importFrom(htmlwidgets,onRender)
 importFrom(mapboxer,mapboxer)

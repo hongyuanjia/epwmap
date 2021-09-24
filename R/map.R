@@ -8,7 +8,7 @@
 #' epwmap()
 #' }
 epwmap <- function() {
-    db <- eplusr:::WEATHER_DB
+    db <- getFromNamespace("WEATHER_DB", "eplusr")
 
     map <- mapboxer::as_mapbox_source(db, lng = "longitude", lat = "latitude")
     map <- mapboxer::mapboxer(map, style = mapboxer::basemaps$Carto$positron,
@@ -66,6 +66,7 @@ epwmap <- function() {
     add_geocoder(map)
 }
 
+#' @importFrom htmlwidgets onRender
 add_geocoder <- function(map) {
     geocoder_plugin <- htmltools::htmlDependency(
         name = "geocoder",
@@ -75,7 +76,7 @@ add_geocoder <- function(map) {
         stylesheet = "mapbox-gl-geocoder.css"
     )
 
-    map <- mapboxer:::add_deps(map, list(geocoder_plugin))
+    map$dependencies <- c(map$dependencies, list(geocoder_plugin))
 
     htmlwidgets::onRender(map,
         "function(el, x) {
