@@ -11,7 +11,9 @@ epwmap <- function() {
     db <- eplusr:::WEATHER_DB
 
     map <- mapboxer::as_mapbox_source(db, lng = "longitude", lat = "latitude")
-    map <- mapboxer::mapboxer(map, style = mapboxer::basemaps$Carto$positron)
+    map <- mapboxer::mapboxer(map, style = mapboxer::basemaps$Carto$positron,
+        token = "pk.eyJ1IjoiaG9uZ3l1YW5qaWEiLCJhIjoiY2t0eG5vNnUzMnZnMjJ2cG16dTlqa29oNiJ9.Ms783VAJopS7K7ST8M1s-Q"
+    )
     map <- mapboxer::add_navigation_control(map, pos = "top-left", showCompass = TRUE)
     map <- mapboxer::add_fullscreen_control(map)
     map <- mapboxer::add_scale_control(map, unit = "nautical")
