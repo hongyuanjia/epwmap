@@ -61,5 +61,28 @@ epwmap <- function() {
             '
     )
 
-    map
+    add_geocoder(map)
+}
+
+add_geocoder <- function(map) {
+    geocoder_plugin <- htmltools::htmlDependency(
+        name = "geocoder",
+        version = "4.7.2",
+        src = c(href = "https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2"),
+        script = "mapbox-gl-geocoder.min.js",
+        stylesheet = "mapbox-gl-geocoder.css"
+    )
+
+    map <- mapboxer:::add_deps(map, list(geocoder_plugin))
+
+    htmlwidgets::onRender(map,
+        "function(el, x) {
+           const map = mapboxer._widget[el.id].map;
+           const geocoder = new MapboxGeocoder({
+               accessToken: mapboxgl.accessToken,
+               mapboxgl: mapboxgl
+           });
+           map.addControl(geocoder);
+        }"
+    )
 }
